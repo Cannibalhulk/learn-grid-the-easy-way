@@ -111,7 +111,7 @@ h3 {
 /* utilities */
 .flex {
   display: flex;
-  gap: var(--gap, 1rem);
+  gap: var(--gap, 2rem);
 }
 
 .flow > *:where(:not(:first-child)) {
@@ -143,11 +143,62 @@ h3 {
 }
 
 /* components */
+
 .testimonial-grid {
-  padding-block: 2rem;
+  display:grid;
+  gap:1.5em;
+  grid-auto-columns: 1fr;
+  grid-template-areas: 
+  'one'
+  'two'
+  'three'
+  'four'
+  'five';
+  
+  padding-block : 2rem;
   width: min(95%, 70rem);
   margin-inline: auto;
 }
+
+.testimonial:nth-child(1){
+  grid-area:one;
+
+}
+.testimonial:nth-child(2){
+  grid-area:two
+
+}
+.testimonial:nth-child(3){
+  grid-area:three;
+
+}
+.testimonial:nth-child(4){
+  grid-area:four;
+
+}
+.testimonial:nth-child(5){
+  grid-area: five;
+}
+
+@media (min-width:30em){
+  .testimonial-grid{
+    grid-template-areas: 
+    'one one '
+    'two five'
+    'three five'
+    'four four';
+  }
+}
+
+
+@media (min-width:50em){
+.testimonial-grid{
+    grid-template-areas: 'one one two five'
+    'three four four five';
+  }
+}
+
+
 
 .testimonial {
   font-size: var(--fs-400);
